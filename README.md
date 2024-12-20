@@ -1,17 +1,14 @@
 # ETLProjectAPI
 
 ## Descrição
-Este projeto é uma aplicação de ETL (Extract, Transform, Load) que utiliza a biblioteca `requests` do Python para extrair dados de uma API, transformá-los conforme necessário e carregá-los em um banco de dados.
+Este projeto demonstra como fazer uma solicitação POST a uma API usando a biblioteca `requests` do Python. O exemplo específico (`01_requests_json_api_param.py`) envia uma pergunta para um modelo de linguagem e imprime a resposta.
 
 ## Estrutura do Projeto
-- `extract.py`: Contém funções para extrair dados da API.
-- `transform.py`: Contém funções para transformar os dados extraídos.
-- `load.py`: Contém funções para carregar os dados transformados em um banco de dados.
-- `main.py`: Script principal que orquestra o processo de ETL.
+- `01_requests_json_api_param.py`: Script que envia uma solicitação POST para uma API e processa a resposta.
 
 ## Requisitos
 - Python 3.6+
-- Bibliotecas Python: `requests`, `pandas`, `sqlalchemy`
+- Bibliotecas Python: `requests`
 
 ## Instalação
 1. Clone o repositório:
@@ -28,15 +25,15 @@ Este projeto é uma aplicação de ETL (Extract, Transform, Load) que utiliza a 
 
 3. Instale as dependências:
     ```sh
-    pip install -r requirements.txt
+    pip install requests
     ```
 
 ## Uso
-1. Configure as variáveis de ambiente necessárias no arquivo `.env`.
+1. Configure as variáveis de ambiente necessárias no arquivo [.env](http://_vscodecontentref_/1).
 
-2. Execute o script principal:
+2. Execute o script:
     ```sh
-    python main.py
+    python exemplos/01_requests_json_api_param.py
     ```
 
 ## Contribuição
