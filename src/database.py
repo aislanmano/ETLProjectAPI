@@ -1,7 +1,7 @@
 from sqlalchemy import *
 from sqlalchemy.dialects import * 
 from sqlalchemy.orm import declarative_base 
-from sqlalchemy import column, Integer, String, Float, DateTime
+from sqlalchemy import Column, Float, String, Integer, DateTime
 from datetime import datetime
 
 #Cria a classe Base do SQLAlchemy (na versão 2.x)
@@ -11,8 +11,8 @@ class BitcoinPreco(Base):
     """Define a tabela no banco de dados."""
     __tablename__ = 'bitcoin_precos'
     
-    id =            column(Integer, primary_key=True, autoincrement=True)
-    criptomoeda =   column(String(50), nullable=False)
-    moeda =         column(String(10), nullable=False)
-    valor =         column(Float, nullable=False)
-    timestamp =     column(DateTime, default=datetime.now)
+    id =            Column(Integer, primary_key=True, autoincrement=True)
+    valor =         Column(Float, nullable=False)
+    criptomoeda =   Column(String(50), nullable=False)
+    moeda =         Column(String(10), nullable=False)
+    timestamp =     Column(DateTime, default=datetime.now)

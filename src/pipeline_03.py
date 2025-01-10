@@ -45,15 +45,15 @@ def transform_dados_bitcoin(dados):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
     dados_transformados = {        
-        'criptomoeda': criptomoeda,
-        'moeda': moeda,
-        'valor': valor,
-        'timestamp': timestamp
+        "valor": valor,
+        "criptomoeda": criptomoeda,
+        "moeda": moeda,
+        "timestamp": timestamp
     }
     
     return dados_transformados
 
-def salvar_dados_pstregsql(dados):
+def salvar_dados_postgresql(dados):
     """Salva os dados no banco de dados PostgreSQL."""
     session = Session()
     novo_registro = BitcoinPreco(**dados)
@@ -64,19 +64,20 @@ def salvar_dados_pstregsql(dados):
       
 if __name__ == '__main__':
     criar_tabela()
-    print("Iniciando ETL com atualziação a cada 15 segundos... (CTRL+C para interromper)")
+    print("Iniciando ETL com atualização a cada 10 segundos... (CTRL+C para interromper)")
+    
     while True:
         try:            
             dados_json = extract_dados_bitcoin()
             if dados_json:
                 dados_transformados = transform_dados_bitcoin(dados_json)
                 print("Dados tratados: ", dados_transformados)
-                salvar_dados_pstregsql(dados_transformados)
-                time.sleep(15)
+                salvar_dados_postgresql(dados_transformados)
+                time.sleep(10)
         except KeyboardInterrupt:
-            print("\nInterrompendo ETL pelo usuário. Finalizando...")
+            print("\nProcesso ETL interrompido pelo usuário. Finalizando...")
             break
         except Exception as e:
             print(f"Erro durante a execução: {e}")
-            time.sleep(15)
+            time.sleep(10)
         
